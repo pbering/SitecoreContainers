@@ -6,10 +6,10 @@ Playground...
 
 	$env:DOCKER_HOST = "tcp://10.20.34.227:2375"
 
-	docker build -t sitecoredev:8.1.151003 -f .\containers\sitecore81rev151003\mssql.Dockerfile .\sitecore81rev151003
-	docker build -t sitecoredev:8.1.151207 -f .\containers\sitecore81rev151207\mssql.Dockerfile .\sitecore81rev151207
+	docker build -t sitecoredev:8.1.151003 -f .\images\sitecore81rev151003\mssql.Dockerfile .\sitecore81rev151003
+	docker build -t sitecoredev:8.1.151207 -f .\images\sitecore81rev151207\mssql.Dockerfile .\sitecore81rev151207
 
-	docker build -t sitecore:8.1.151003 .\containers\sitecore81rev151003\
+	docker build -t sitecore:8.1.151003 .\images\sitecore81rev151003\
 	docker tag sitecore:8.1.151003 sitecore:latest
 	docker run -it -p 80:80 sitecore:8.1.151003 powershell
 
