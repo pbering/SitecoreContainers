@@ -1,0 +1,5 @@
+﻿containers/mssql/install
+containers/sitecore81rev151003/inetpub/Sitecore
+containers/sitecore81rev151207/inetpub/Sitecore
+containers/website/inetpub/Sitecore/Data/license.xml
+containers/website-mssql/inetpub/Sitecore/Data/license.xml

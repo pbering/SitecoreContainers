@@ -1,0 +1,11 @@
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_POLYBASE_CORE_INST.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_IS.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_RS*.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_FULLTEXT.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_DQ*.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_DREPLAY*.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_AS.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/MASTERDATA*.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_SS*.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SQL_TOOLS*.MSI
+install/SQLServer2016-x64-ENU/x64/Setup/SEMANTICLANGUAGEDATABASE.MSI
