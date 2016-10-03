@@ -1,3 +1,3 @@
-FROM sitecore:8.1.151003
+FROM sitecore-aspnet:8.1.160519
 
-COPY ./inetpub /inetpub
+COPY Sitecore/ /Sitecore

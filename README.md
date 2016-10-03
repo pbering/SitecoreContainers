@@ -1,36 +1,25 @@
-#Sitecore + Windows Server Containers + Docker#
+#Sitecore + Windows Containers + Docker#
 
 Playground...
 
 ## Notes ##
 
-	$env:DOCKER_HOST = "tcp://10.20.34.227:2375"
+	docker build -t sitecore-mssql:8.1.160519 .\images\sitecore81rev160519-mssql
+	docker build -t sitecore-aspnet:8.1.160519 .\images\sitecore81rev160519-aspnet
 
-	docker build -t sitecoredev:8.1.151003 -f .\images\sitecore81rev151003\mssql.Dockerfile .\sitecore81rev151003
-	docker build -t sitecoredev:8.1.151207 -f .\images\sitecore81rev151207\mssql.Dockerfile .\sitecore81rev151207
+	docker run -d -p 1433:1433 --name demo-sql sitecore-mssql:8.1.160519
 
-	docker build -t sitecore:8.1.151003 .\images\sitecore81rev151003\
-	docker tag sitecore:8.1.151003 sitecore:latest
-	docker run -it -p 80:80 sitecore:8.1.151003 powershell
+	HACK: use inspect to get ip of sql and add to connectionstrings...
 
-	docker rm $(docker ps -a -q)
-	docker rmi $(docker images -q -f dangling=true)
+	docker build -t website .\images\website
+	docker run -d -p 8000:8000 --name demo-website website
 
-	docker run --name demo -d -p 80:80 sitecore81;docker exec -t -i demo powershell
-	docker run --name demo -it -p 80:80 sitecore81 powershell
+	docker exec -t -i demo-website powershell
+	Get-Content -path C:\Sitecore\Data\logs\log.*.txt -Wait
 
-	get-content -path C:\inetpub\Sitecore\Data\logs\log.*.txt -tail 100 -Wait
+## Todo's ##
 
-# Issues #
-
-- Setting NTFS permissions does not work (yet?), not even manually by running container and commiting images. Everything must run as Local System
-
-# Ideas #
-
-- Split webapp from mssql
-- Look into using Docker build from github url
-- Use ENTRYPOINT / CMD to output sitecore logs via UdpReader exe that must not exit?
-		- Better yet, make powershell scipt to watch for file changes and pipe out - no changes to sitecore needed
-				LIKE: get-content -path C:\inetpub\Sitecore\Data\logs\log.*.txt -tail 100 -Wait
-- Test mounting, look into "Data Volume Containers"
-- Split dockerfile, one for build and one for deployment
+- Sql and data, should image expose volumne? 
+- Switch to 32 bit app pool
+- What to do about connectionstrings, could environment variables be used some how?
+- Sitecore logging output

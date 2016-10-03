@@ -1,5 +1,2 @@
-﻿images/mssql/install
-images/sitecore81rev151003/inetpub/Sitecore
-images/sitecore81rev151207/inetpub/Sitecore
-images/website/inetpub/Sitecore/Data/license.xml
-images/website-mssql/inetpub/Sitecore/Data/license.xml
+﻿images/sitecore81rev160519*/Sitecore
+images/website/Sitecore/Data/license.xml
