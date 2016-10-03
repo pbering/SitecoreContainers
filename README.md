@@ -19,7 +19,7 @@ Playground...
 
 ## Todo's ##
 
-- Sql and data, should image expose volumne? 
+- Sql and data, should image expose volumne so demo-sql was mapping volumne? 
 - Switch to 32 bit app pool
 - What to do about connectionstrings, could environment variables be used some how?
 - Sitecore logging output
