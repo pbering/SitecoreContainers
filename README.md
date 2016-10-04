@@ -15,6 +15,7 @@ Playground...
 	Get-Content -path C:\Sitecore\Data\logs\log.*.txt -Wait
 
 	docker rmi $(docker images -q -f dangling=true)
+	docker attach demo-website
 
 ## TODO's ##
 
