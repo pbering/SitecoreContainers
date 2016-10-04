@@ -10,5 +10,8 @@ $cfg.Replace("user;", "$sqlUser;").Replace("password;", "$sqlPassword;").Replace
 
 Write-Output "$cfgPath updated"
 
+# Ready
+Write-Output "Waiting on first request..."
+
 # Keep container running
-ping localhost -t
+. C:\Sitecore\UDP.ps1
