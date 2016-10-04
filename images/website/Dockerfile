@@ -6,4 +6,4 @@ ENV SQL_SERVER _
 
 ADD Sitecore/ /Sitecore
 
-RUN powershell -NoProfile -Command C:\Sitecore\Configure.ps1 -Verbose
+CMD powershell -NoProfile -Command C:\Sitecore\Start.ps1
