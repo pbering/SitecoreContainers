@@ -11,7 +11,9 @@ $cfg.Replace("user;", "$sqlUser;").Replace("password;", "$sqlPassword;").Replace
 Write-Output "$cfgPath updated"
 
 # Ready
-Write-Output "Waiting on first request..."
+$containerIp =  Get-NetAdapter | select -First 1 | Get-NetIPAddress | ? { $_.AddressFamily -eq "IPv4"} | select -Property IPAddress |  % { $_.IPAddress }
+
+Write-Output "Waiting on first request to $containerIp..."
 
 # Keep container running
 . C:\Sitecore\UDP.ps1
