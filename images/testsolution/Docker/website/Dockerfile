@@ -1,6 +1,6 @@
 FROM sitecore-aspnet:8.1.160519
 
-ADD Docker/Sitecore/ /Sitecore
+ADD / /Sitecore
 
 VOLUME C:/Workspace
 
