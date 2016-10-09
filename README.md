@@ -2,7 +2,7 @@
 
 Playground...
 
-## Notes ##
+## Commands ##
 
 	docker build -t sitecore-mssql:8.1.160519 .\images\sitecore81rev160519-mssql
 	docker build -t sitecore-aspnet:8.1.160519 .\images\sitecore81rev160519-aspnet
@@ -17,7 +17,7 @@ Playground...
 	docker rmi $(docker images -q -f dangling=true)
 	docker attach demo-website
 
-### Persist ###
+### Test Solution ###
 
 	docker build -t testsolution-sql .\images\testsolution\docker\sql
 	docker build -t testsolution-website .\images\testsolution\docker\website
@@ -27,8 +27,7 @@ Playground...
 
 ## TODO's ##
 
-- TestSolution: Make Up and Down scripts (use parent directory name as name prefix like compose does)...
-- Switch to compose when it starts working...
+- Switch to compose when it starts working instead of "Up" script...
 - Logging...
 
 ## Known issues ##
