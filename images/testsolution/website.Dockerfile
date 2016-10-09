@@ -4,4 +4,4 @@ ADD Docker/Sitecore/ /Sitecore
 
 VOLUME C:/Workspace
 
-CMD powershell -NoProfile -Command C:\Sitecore\Start.ps1
+CMD powershell -NoProfile -Command C:\Sitecore\Setup.ps1; C:\Sitecore\Watch.ps1 -Path 'C:\Workspace' -Destination 'C:\Sitecore\Website'
