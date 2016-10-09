@@ -1,6 +1,6 @@
 FROM sitecore-aspnet:8.1.160519
 
-ADD / /Sitecore
+ADD /Sitecore /Sitecore
 
 VOLUME C:/Workspace
 
