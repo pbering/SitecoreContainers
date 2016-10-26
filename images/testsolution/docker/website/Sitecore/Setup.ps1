@@ -1,12 +1,11 @@
 # Get environment variables
-$sqlUser = $env:SQL_USER
-$sqlPassword = $env:SQL_PASSWORD
-$sqlServer = $env:SQL_SERVER
+$sqlPassword = $env:sa_password
+$sqlServer = $env:sql_server
 
 # Update connection strings
 $cfgPath = Join-Path $PSScriptRoot "Website\App_Config\ConnectionStrings.config"
 $cfg = Get-Content $cfgPath
-$cfg.Replace("user;", "$sqlUser;").Replace("password;", "$sqlPassword;").Replace("(server);", "$sqlServer;") | Out-File $cfgPath -Encoding ASCII
+$cfg.Replace("user;", "sa;").Replace("password;", "$sqlPassword;").Replace("(server);", "$sqlServer;") | Out-File $cfgPath -Encoding ASCII
 
 Write-Output "Setup: $cfgPath updated"
 

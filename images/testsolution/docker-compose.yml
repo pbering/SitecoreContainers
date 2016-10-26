@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+ sql:
+  image: microsoft/mssql-server-2016-express-windows
+  ports:
+   - "1433:1433" 
+  volumes:
+   - .\docker\sql:C:\Data 
+  environment:
+   sa_password: Sitecore_Containers_Rocks_9999
+   attach_dbs: "[{'dbName':'Sitecore_Core','dbFiles':['C:\\\\Data\\\\Sitecore.Core.mdf','C:\\\\Data\\\\Sitecore.Core.ldf']},{'dbName':'Sitecore_Master','dbFiles':['C:\\\\Data\\\\Sitecore.Master.mdf', 'C:\\\\Data\\\\Sitecore.Master.ldf']},{'dbName': 'Sitecore_Web', 'dbFiles': ['C:\\\\Data\\\\Sitecore.Web.mdf','C:\\\\Data\\\\Sitecore.Web.ldf']},{'dbName':'Sitecore_Analytics','dbFiles':['C:\\\\Data\\\\Sitecore.Analytics.mdf','C:\\\\Data\\\\Sitecore.Analytics.ldf']}]"   
+  
+ web:
+  build: .\docker\website
+  ports:
+   - "8000:8000"
+  volumes:
+   - .\src\Website:C:\Workspace
+  links: 
+   - sql
+  environment:
+   sa_password: Sitecore_Containers_Rocks_9999
+   sql_server: sql
+  
+networks:
+ default:
+  external:
+   name: "nat"

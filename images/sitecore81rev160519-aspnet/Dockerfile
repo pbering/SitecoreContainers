@@ -5,10 +5,11 @@ RUN mkdir C:\Sitecore\Website \
         Add-WindowsFeature Web-Server; \
         Add-WindowsFeature NET-Framework-45-ASPNET; \
         Add-WindowsFeature Web-Asp-Net45; \
-        Import-Module IISAdministration; \
-        New-IISSite -Name "Sitecore" -PhysicalPath "C:\Sitecore\Website" -BindingInformation "*:8000:"; \
+        Import-Module IISAdministration; \        
         Import-Module WebAdministration; \
-        Set-ItemProperty "IIS:\apppools\DefaultAppPool" -Name "enable32BitAppOnWin64" -Value "True";
+        New-IISSite -Name 'Sitecore' -PhysicalPath 'C:\Sitecore\Website' -BindingInformation '*:8000:'; \
+        Set-ItemProperty 'IIS:\apppools\DefaultAppPool' -Name 'enable32BitAppOnWin64' -Value 'True'; \
+        Remove-IISSite -Name 'Default Web Site' -Confirm:$false;
 
 EXPOSE 8000
 

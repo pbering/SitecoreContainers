@@ -10,7 +10,7 @@ param(
     $Destination,
     # Array of filename patterns (-like operator) to ignore
     [Parameter(Mandatory=$false)]
-    [array]$Ignore = @("*\obj\*")
+    [array]$Ignore = @("*\obj\*", "*.cs", "*.csproj")
 )
 
 $Destination = $Destination.TrimEnd("\")
