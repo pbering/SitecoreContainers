@@ -37,7 +37,9 @@ Compose 1.9+ required
 
 ## TODO's ##
 
-- Cleanup
+- Move ConnectionString into website?
+- Can internal IIS port be defined in compose file? (using args)
+- Cleanup (delete website and sitecore specific sql variant?)
 - Logging?...
 
 ## Known issues ##
