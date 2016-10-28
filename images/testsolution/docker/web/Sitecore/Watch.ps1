@@ -15,14 +15,13 @@ param(
 
 $Destination = $Destination.TrimEnd("\")
 
-Write-Host ("{0}: Watching '{1}' => '{2}', ignoring '{3}'..." -f [DateTime]::Now.ToLongTimeString(), $Path, $Destination, ($Ignore -join ", "))
+Write-Host ("{0}: Watching '{1}' for changes, will copy to '{2}' while ignoring '{3}'..." -f [DateTime]::Now.ToString("s"), $Path, $Destination, ($Ignore -join ", "))
               
 while($true)
 {   
     Get-ChildItem -Path $Path -Recurse -File | % {
         $sourcePath = $_.FullName
         $targetPath = ("{0}\{1}" -f $Destination, $_.FullName.Replace("$Path\", ""))  
-        
         $ignored = $false
         
         if($Ignore -ne $null -and $Ignore.Length -gt 0) {
@@ -56,7 +55,7 @@ while($true)
                
                 Copy-Item -Path $sourcePath -Destination $targetPath -Force
                
-                Write-Host ("{0}: Copied '{1}' to target, was '{3}'" -f [DateTime]::Now.ToLongTimeString(), $sourcePath, $targetPath, $triggerReason)
+                Write-Host ("{0}: {1, -9} -> {2, -9}" -f [DateTime]::Now.ToString("s"), $triggerReason, $sourcePath)
             }
         }
     }    

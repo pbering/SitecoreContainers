@@ -27,6 +27,8 @@ Playground...
 	docker run -d -p 1433:1433 --env sa_password=Sitecore_Containers_Rocks_9999 --name demo-testsolution-sql --volume d:/Projects/SitecoreContainers/images/testsolution/docker/sql/Sitecore/Databases:C:/Data testsolution-sql
 	docker run -p 8000:8000 --env "SQL_USER=sa" --env "SQL_PASSWORD=Sitecore_Containers_Rocks_9999" --env "SQL_SERVER=demo-testsolution-sql" --name demo-testsolution-website --link demo-testsolution-sql --volume d:/Projects/SitecoreContainers/images/testsolution/src/Website:C:/Workspace testsolution-website
 
+---
+
 ## Test Solution ##
 
 Compose 1.9+ required
@@ -34,11 +36,10 @@ Compose 1.9+ required
 	docker-compose build
 	docker-compose up
 	docker-compose up --build
+	docker-compose scale web=3
 
 ## TODO's ##
 
-- Move ConnectionString into website?
-- Can internal IIS port be defined in compose file? (using args)
 - Cleanup (delete website and sitecore specific sql variant?)
 - Logging?...
 

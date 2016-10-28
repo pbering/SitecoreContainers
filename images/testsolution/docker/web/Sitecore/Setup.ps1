@@ -10,6 +10,6 @@ $cfg.Replace("user;", "sa;").Replace("password;", "$sqlPassword;").Replace("(ser
 Write-Output "Setup: $cfgPath updated"
 
 # Ready
-$containerIp =  Get-NetAdapter | select -First 1 | Get-NetIPAddress | ? { $_.AddressFamily -eq "IPv4"} | select -Property IPAddress |  % { $_.IPAddress }
+$ip =  Get-NetAdapter | select -First 1 | Get-NetIPAddress | ? { $_.AddressFamily -eq "IPv4"} | select -Property IPAddress |  % { $_.IPAddress }
 
-Write-Output "Setup: Running on $containerIp"
+Write-Output "Setup: Running on $ip`:80"

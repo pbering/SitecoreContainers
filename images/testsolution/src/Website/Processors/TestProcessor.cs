@@ -1,12 +1,13 @@
-﻿using Sitecore.Pipelines.HttpRequest;
+﻿using System;
+using Sitecore.Pipelines.HttpRequest;
 
 namespace Website.Processors
 {
-    public class TestProcessor: HttpRequestProcessor
+    public class TestProcessor : HttpRequestProcessor
     {
         public override void Process(HttpRequestArgs args)
         {
-            args.Context.Response.Write("<h1>Hello!</h1>");
+            args.Context.Response.Write($"<h1>Hello {Environment.MachineName}...</h1>");
         }
     }
 }
