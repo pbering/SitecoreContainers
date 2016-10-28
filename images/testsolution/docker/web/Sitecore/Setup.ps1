@@ -7,9 +7,10 @@ $cfgPath = Join-Path $PSScriptRoot "Website\App_Config\ConnectionStrings.config"
 $cfg = Get-Content $cfgPath
 $cfg.Replace("user;", "sa;").Replace("password;", "$sqlPassword;").Replace("(server);", "$sqlServer;") | Out-File $cfgPath -Encoding ASCII
 
-Write-Output "Setup: $cfgPath updated"
+Write-Host ("{0}: Updated '{1}'." -f [DateTime]::Now.ToString("s"), $cfgPath)
 
-# Ready
+# Find container IP
 $ip =  Get-NetAdapter | select -First 1 | Get-NetIPAddress | ? { $_.AddressFamily -eq "IPv4"} | select -Property IPAddress |  % { $_.IPAddress }
 
-Write-Output "Setup: Running on $ip`:80"
+# Ready
+Write-Host ("{0}: Container IP {1}" -f [DateTime]::Now.ToString("s"), $ip)

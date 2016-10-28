@@ -13,12 +13,8 @@ param(
     [array]$Ignore = @("*\obj\*", "*.cs", "*.csproj")
 )
 
-$Destination = $Destination.TrimEnd("\")
-
-Write-Host ("{0}: Watching '{1}' for changes, will copy to '{2}' while ignoring '{3}'..." -f [DateTime]::Now.ToString("s"), $Path, $Destination, ($Ignore -join ", "))
-              
-while($true)
-{   
+function Sync 
+{
     Get-ChildItem -Path $Path -Recurse -File | % {
         $sourcePath = $_.FullName
         $targetPath = ("{0}\{1}" -f $Destination, $_.FullName.Replace("$Path\", ""))  
@@ -55,10 +51,35 @@ while($true)
                
                 Copy-Item -Path $sourcePath -Destination $targetPath -Force
                
-                Write-Host ("{0}: {1, -9} -> {2, -9}" -f [DateTime]::Now.ToString("s"), $triggerReason, $sourcePath)
+                Write-Output ("{0}: {1, -9} -> {2, -9}" -f [DateTime]::Now.ToString("s"), $triggerReason, ($sourcePath.Replace("$Path\", "")))
             }
         }
-    }    
+    }   
+}
+
+$Destination = $Destination.TrimEnd("\")
+
+Write-Host ("{0}: Warming up..." -f [DateTime]::Now.ToString("s"))
+
+# Initial sync
+Sync | Out-Null
+
+# Warm up
+try 
+{
+    Invoke-WebRequest -Uri "http://localhost:80" -UseBasicParsing -TimeoutSec 20 -ErrorAction "SilentlyContinue" | Out-Null
+}
+catch 
+{
+    # OK    
+}
+
+Write-Host ("{0}: Watching '{1}' for changes, will copy to '{2}' while ignoring '{3}'." -f [DateTime]::Now.ToString("s"), $Path, $Destination, ($Ignore -join ", "))
+
+# Start            
+while($true)
+{   
+    Sync | Write-Host
 
     Sleep -Milliseconds 500
 }

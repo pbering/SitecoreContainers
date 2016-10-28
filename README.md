@@ -41,7 +41,7 @@ Compose 1.9+ required
 ## TODO's ##
 
 - Cleanup (delete website and sitecore specific sql variant?)
-- Logging?...
+- Logging?... (udp logger that you can run with docker exec)
 
 ## Known issues ##
 
