@@ -2,7 +2,7 @@
 
 Playground...
 
-## Commands ##
+## Notes ##
 
 	docker build -t sitecore-mssql:8.1.160519 .\images\sitecore81rev160519-mssql
 	docker build -t sitecore-aspnet:8.1.160519 .\images\sitecore81rev160519-aspnet
@@ -31,12 +31,18 @@ Playground...
 
 ## Test Solution ##
 
+	docker build -t sitecore-aspnet:8.1.160519 .\images\sitecore81rev160519-aspnet
+	docker build -t winnginx .\images\winnginx
+	docker build -t wintraefik .\images\wintraefik	
+
 Compose 1.9+ required
 
 	docker-compose build
 	docker-compose up
+
+or
+
 	docker-compose up --build
-	docker-compose scale web=3
 
 ## TODO's ##
 
