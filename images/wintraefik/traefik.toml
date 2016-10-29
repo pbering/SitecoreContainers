@@ -18,6 +18,5 @@ address = ":8080"
 [frontends]
   [frontends.www]
   backend = "sitecore"
-  entrypoints = ["http"] 
-    [frontends.www.routes.all]
-    rule = "Path:/"
+  entrypoints = ["http"]
+  

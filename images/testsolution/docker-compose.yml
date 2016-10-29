@@ -30,7 +30,7 @@ services:
    sql_server: db
 
  lb:
-  image: winnginx
+  image: wintraefik
   links:
    - web1
    - web2
